@@ -53,8 +53,8 @@ sf.write("traccia_norm.wav", tr_norm, sr)
 #dereverbering
 import scipy.signal as signal
 
-tr_norm, sr_norm = librosa.load("traccia_norm.wav", sr = None)
-sos = signal.butter(N=4, Wn=150, btype="highpass", fs=sr_diff, output= "sos")
+tr_norm, sr = librosa.load("traccia_norm.wav", sr = None)
+sos = signal.butter(N=4, Wn=450, btype="highpass", fs=sr, output= "sos")
 
 tr_der = signal.sosfilt(sos, tr_norm)
 sf.write("traccia_der.wav", tr_der, sr)
